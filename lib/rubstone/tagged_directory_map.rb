@@ -30,15 +30,18 @@ module Rubstone
   class TaggedDirectory
     attr_reader :tag
     attr_reader :path
+    attr_reader :ignore_lib_name
     attr_reader :exclusions
 
     def initialize(tag, value)
       @tag = tag
       if(value.kind_of?(String))
         @path = value
+        @ignore_lib_name = false
         @exclusions = []
       else
         @path = value["path"]
+        @ignore_lib_name = value["ignore_lib_name"]
         @exclusions = value["exclusions"]
       end
     end

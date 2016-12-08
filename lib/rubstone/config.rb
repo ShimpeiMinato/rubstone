@@ -40,7 +40,12 @@ module Rubstone
     end
 
     def copied_subdir(lib_name, tag)
-      File.join(@tagged_directory_map.directory(tag), lib_name)
+      tagged_dir = @tagged_directory_map.tagged_directory(tag)
+      if tagged_dir.ignore_lib_name
+        tagged_dir.path
+      else
+        File.join(tagged_dir.path, lib_name)
+      end
     end
   end
 end
