@@ -62,6 +62,7 @@ module Rubstone
         Rubstone::DirectoryRelation.new(
           @config.repository_subdir(name, tagged_dir.path),
           @config.copied_subdir(name, tag),
+          @config.ignore_delete(tag),
           tagged_dir.exclusions
           )
       }

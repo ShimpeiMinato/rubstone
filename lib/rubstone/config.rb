@@ -47,5 +47,9 @@ module Rubstone
         File.join(tagged_dir.path, lib_name)
       end
     end
+
+    def ignore_delete(tag)
+      @tagged_directory_map.ignore_delete(tag)
+    end
   end
 end

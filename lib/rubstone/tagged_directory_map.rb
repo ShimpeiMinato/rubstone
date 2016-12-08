@@ -22,6 +22,10 @@ module Rubstone
       @tag_dir_map[tag].path
     end
 
+    def ignore_delete(tag)
+      @tag_dir_map[tag].ignore_delete
+    end
+
     def tagged_directory(tag)
       @tag_dir_map[tag]
     end
@@ -31,6 +35,7 @@ module Rubstone
     attr_reader :tag
     attr_reader :path
     attr_reader :ignore_lib_name
+    attr_reader :ignore_delete
     attr_reader :exclusions
 
     def initialize(tag, value)
@@ -38,10 +43,12 @@ module Rubstone
       if(value.kind_of?(String))
         @path = value
         @ignore_lib_name = false
+        @ignore_delete = false
         @exclusions = []
       else
         @path = value["path"]
         @ignore_lib_name = value["ignore_lib_name"]
+        @ignore_delete = value["ignore_delete"]
         @exclusions = value["exclusions"]
       end
     end
